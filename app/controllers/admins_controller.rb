@@ -1,12 +1,10 @@
 class AdminsController < ApplicationController
 
-  def create
-    @employee = Employee.find(params[:employee_id])
-    redirect_to employee_path(@employee)
-  end
+   before_action :authorized?, only: [:edit, :update, :destroy]
 
-  private
-    def comment_params
-      params.require(:comment).permit(:commenter, :body)
+  def authorized?
+    unless Admin.create?(current_user, @employee)
+      render :file => "public/404.html", :status => :unauthorized
     end
+  end
 end
