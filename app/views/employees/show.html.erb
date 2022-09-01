@@ -1,0 +1,9 @@
+<h1><%= @employee.name %></h1>
+
+<ul>
+  <li><%= link_to "Edit Employee", edit_employee_path(@employee) %></li>
+  <li><%= link_to "Delete Employee", employee_path(@employee), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+</ul>

@@ -1,0 +1,38 @@
+<%= form_with model: @employee do |form| %>
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name, class: 'radius' %>
+    <% @employee.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :Employment_Type %><br>
+    <%= form.select :employee_detail, options_for_select([["Select One", ""], "Insurance Agent", "Insurance Officer", "Manager", "Regional Head", "Other"]), :class => 'genForm_dropBox'  %>
+
+    <% @employee.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :Age %><br>
+    <%= form.text_field :date, type: "date", class: 'radius' %>
+    <% @employee.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div >
+    <%= form.label :Admin %><br>
+    <%= form.check_box :is_admin, class: "form-control" %>
+    <% @employee.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
